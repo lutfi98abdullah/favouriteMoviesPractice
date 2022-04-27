@@ -52,6 +52,7 @@ public class MovieRepo {
             actors.setActorId(rs.getInt("actor_id"));
             actors.setActorName(rs.getString("actor_name"));
             actors.setIsDeleted(rs.getBoolean("is_deleted"));
+            actorsList.add(actors);
         }
         
         return actorsList;

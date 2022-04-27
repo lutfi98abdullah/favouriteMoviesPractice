@@ -41,6 +41,16 @@
         </tr>
       </tbody>
     </table>
-   
+    <br>
+    <table border="1">
+        <tbody>
+          <th>Id</th>
+          <th>Name</th>
+            <tr data-th-each="movie : ${actorsList}">
+            <td data-th-text="${actors.getActorId}"></td>
+            <td data-th-text="${actors.getActorName}"></td> 
+          </tr>
+        </tbody>
+      </table>
   </body>
 </html>
