@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie List</title>
+  </head>
+  <body>
+      <div style="width:80%; margin:0 auto;">
+    <h1>My Favourite Movies</h1>
+    <table border="1">
+      <tbody>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Release Date</th>
+        <th>Synopsis</th>
+        <th>Acting Cast</th>
+        <tr data-th-each="movie : ${moviesList}">
+          <td data-th-text="${movie.getMovieId}"></td>
+          <td data-th-text="${movie.getMovieName}"></td>
+          <td data-th-text="${movie.getPersonalRating}"></td>
+          <td data-th-text="${movie.getReleaseDate}"></td>
+          <td data-th-text="${movie.getSynopsis}"></td>
+          <td>
+            <form
+              data-th-action="@{/movie}"
+              data-th-object="${movie}"
+              method="get"
+            >
+              <button
+                name="movieId"
+                data-th-value="${movie.getMovieId}"
+                type="submit"
+              >
+                See Acting Cast
+              </button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+   
+  </body>
+</html>
