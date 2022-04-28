@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Movie Details</h1>
+    <table border =1>
+        <tbody>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Rating</th>
+            <th>Release Date</th>
+            <th>Synopsis</th>
+            <tr>
+                <td data-th-text="${movie.getMovieId}"></td>
+                <td data-th-text="${movie.getMovieName}"></td>
+                <td data-th-text="${movie.getPersonalRating}"></td>
+                <td data-th-text="${movie.getReleaseDate}"></td>
+                <td data-th-text="${movie.getSynopsis}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
+    <hr/>
+    <br/>
+    <h1>Movie Cast</h1> 
+ 
+    <table border =1>
+        <tbody>
+            <th>Id</th>
+            <th>Name</th>
+            <!-- <th>Remove</th> -->
+            <tr data-th-each="actor : ${movieCast}">
+                <td data-th-text="${actor.getActorId}"></td>
+                <td data-th-text="${actor.getActorName}"></td>
+                <!-- <td><button type="submit">Remove</button></td> -->
+            </tr>
+        </tbody>
+    </table>
+    <form action="/addActor" method="post">
+        <select name="addActor" id="addActor">
+            <option data-th-each="actor : ${allActorsList}"
+            data-th-value="${actor.getActorId}"
+            th:text="${actor.getActorName}"></option>
+        </select>
+        <input type="number" name="movieId" data-th-value="${movie.getMovieId}" hidden>
+        <button type="submit">Add This Actor To Movie Cast</button>
+    </form>
+    <span data-th-text="${message}"></span>
+
+
+   
+</body>
+</html>

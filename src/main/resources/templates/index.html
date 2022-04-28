@@ -34,23 +34,80 @@
                 data-th-value="${movie.getMovieId}"
                 type="submit"
               >
-                See Acting Cast
+                View
               </button>
             </form>
           </td>
         </tr>
       </tbody>
     </table>
-    <br>
-    <table border="1">
+    <h3 style="margin-top: 3em"><code>Add a new movie</code></h3>
+    <form
+      data-th-action="@{/createMovie}"
+      method="post"
+      style="margin: 0; padding: 0"
+    >
+      <div>
+        <input
+          style="display: inline"
+          type="text"
+          name="movieName"
+          placeholder="Name of Movie..."
+        />
+        <input
+          style="display: inline"
+          type="number"
+          name="rating"
+          placeholder="Rate it"
+          min="0"
+          max="10"
+        />
+        <input
+          style="display: inline"
+          type="date"
+          name="releaseDate"
+          placeholder="Release Date"
+        />
+        <textarea
+          style="display: inline"
+          type="textarea"
+          name="synopsis"
+          placeholder="synopsis"
+          rows="3"
+          cols="30"
+        ></textarea>
+        <select name="addActor" id="addActor">
+            <option selected="true" disabled>--SELECT MAIN ACTOR--</option>
+            <option data-th-each="actor : ${actorsList}"
+            data-th-value="${actor.getActorId}"
+            th:text="${actor.getActorName}"></option>
+        </select>
+        <button style="display: inline" type="submit">Create Movie</button>
+      </div>
+      <span data-th-text="${messageMovie}"></span>
+    </form>
+    <hr />
+    <br />
+    </div>
+    <div style="width: 300px; margin: 0 auto">
+      <h1>Actor List</h1>
+      <table border="1">
         <tbody>
           <th>Id</th>
           <th>Name</th>
-            <tr data-th-each="movie : ${actorsList}">
-            <td data-th-text="${actors.getActorId}"></td>
-            <td data-th-text="${actors.getActorName}"></td> 
+
+          <tr data-th-each="actor : ${actorsList}">
+            <td data-th-text="${actor.getActorId}"></td>
+            <td data-th-text="${actor.getActorName}"></td>
           </tr>
         </tbody>
       </table>
+
+      <form data-th-action="@{/createActor}" method="post">
+        <input type="text" name="actorName" />
+        <button type="submit">Add</button>
+      </form>
+      <span data-th-text="${messageActor}"></span>
+    </div>
   </body>
 </html>

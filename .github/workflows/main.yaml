@@ -1,11 +1,11 @@
 - name: DeployHeroku
         uses: akhileshns/heroku-deploy@v3.12.12 
         with:
-          heroku_api_key: ${{ secrets.heroku_api_key }}
+          heroku_api_key: 86dea50e-d7ff-4121-893e-bae97761f53c
           heroku_app_name: favouritemovie111
-          heroku_email: ${{ secrets.heroku_email }}
+          heroku_email: lutfi98abdullah@gmail.com
           branch: ${{ github.ref_name }}
         env:
-          HD_SPRING_DATASOURCE_URL: ${{ secrets.SPRING_DATASOURCE_URL }}
-          HD_SPRING_DATASOURCE_USERNAME: ${{ secrets.SPRING_DATASOURCE_USERNAME }}
-          HD_SPRING_DATASOURCE_PASSWORD: ${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+          HD_SPRING_DATASOURCE_URL: jdbc:mysql://db-mysql-sgp1-24457-do-user-11291425-0.b.db.ondigitalocean.com:25060/favourite_movies
+          HD_SPRING_DATASOURCE_USERNAME: doadmin
+          HD_SPRING_DATASOURCE_PASSWORD: AVNS_gKBJREMuvGR64hVSOURCE_PASSWORD }}
